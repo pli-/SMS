@@ -27,6 +27,8 @@
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".PickUniversityActivity" />
+        <activity android:name=".PickBuildingActivity" />
+        <activity android:name=".PickRoomActivity"></activity>
     </application>
 
 </manifest>

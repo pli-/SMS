@@ -32,22 +32,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class PickUniversityActivity extends AppCompatActivity {
+public class PickRoomActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pick_university);
+        setContentView(R.layout.activity_pick_room);
 
-        Button pickRoomButton = (Button) findViewById(R.id.UoftStGeorge);
-        pickRoomButton.setOnClickListener(new View.OnClickListener() {
+        Button saveOrFindButton = (Button) findViewById(R.id.BA1180);
+        saveOrFindButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent proceed = new Intent(PickUniversityActivity.this, PickBuildingActivity.class);
+                Intent proceed = new Intent(PickRoomActivity.this, LoginActivity.class);
                 startActivity(proceed);
             }
         });
-
-
     }
 }
