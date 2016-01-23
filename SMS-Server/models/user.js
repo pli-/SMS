@@ -23,7 +23,7 @@ var UserSchema = new Schema({
   }]
   
   
-  }
+  
 });
 
 
