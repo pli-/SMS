@@ -30,6 +30,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.cloudmine.api.CMApiCredentials;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +39,13 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+
+public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+    // Find this in your developer console
+    private static final String APP_ID = "52bb80091f01482cbe63e7c9df2e3dce";
+    // Find this in your developer console
+    private static final String API_KEY = "8509F10FAA894594A694F0F49E3EBCDB";
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -64,6 +71,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // This will initialize your credentials
+        CMApiCredentials.initialize(APP_ID, API_KEY, getApplicationContext());
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
