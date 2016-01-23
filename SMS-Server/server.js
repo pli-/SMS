@@ -9,7 +9,6 @@ var morgan          = require('morgan');
 var jwt             = require('jsonwebtoken');
 var config          = require('./config');
 var cors            = require('cors');
-var http 			= require('http');
 
 var router = express.Router();  // let get an instance of the express Router
 var port = process.env.PORT || 3000; //set the port
@@ -22,8 +21,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(morgan('dev'));// for logging requests to the console
 app.use(cors());
-
-
 
 
 //route to authenticate a user (POST http://localhost:3000/api/authenticate)
@@ -83,7 +80,7 @@ router.get('/', function(req, res) {
 router.route('/signup').post(function(req, res){
 
   if (!req.body.firstName)
-    res.json({success: false, msg:'Please fill in firstname field'});
+    res.json({success: false, msg:'Please fill in firtname field'});
   else if( !req.body.password)
       res.json({success: false, msg:'Please fill password field'});
   /*else if (!req.body.lastName)
@@ -159,7 +156,7 @@ router.route('/users/:user_id').get(function(req, res){
     if (err)
       res.send(err)
     user.firstName = req.body.firstName; //updates
-    user.password = req.body.password;
+    user.password = re.body.password;
 
     user.save(function(err){
       if (err)
@@ -181,39 +178,3 @@ router.route('/users/:user_id').get(function(req, res){
 app.use('/api', router);
 app.listen(port);
 console.log("listening on port " + port);
-
-
-
-
-var room = new Array(5);
-for (var r = 0; i<5; i++){
-	room[r] = new Array(8);
-	for (var c = 0; c < 8; c++){
-		room[r][c] = 1;
-	}
-}
-
-// on rotes that end in /Users
-router.route('/room').post(function(err, req, res){
-
-  if (!req.body.schoolname)
-    res.json({success: false, msg:'Please fill in schoolname field'});
-  else if( !req.body.buildingname)
-    res.json({success: false, msg:'Please fill buildingname field'});
-  else if (!req.body.roomnumber)
-    res.json({success: false, msg:'Please fill in roomnumber field'});
-  
-
-  else {
-    //check for a room that matches the school, building, and room number
-	
-	if(err){
-	  res.json({message: err});
-	}else{
-		res.json({room, message: "successful room send"});
-		var req = http.request(options, (res))
-	}
-  }	
-
-
-});
