@@ -49,14 +49,14 @@ public class SaveOrFind extends Activity {
 
         saveSeatButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent save = new Intent(SaveOrFind.this, FindSeatActivity.class);
+                Intent save = new Intent(SaveOrFind.this, SaveSeatActivity.class);
                 startActivity(save);
             }
         });
 
         findSeatButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent find = new Intent(SaveOrFind.this, SaveSeatActivity.class);
+                Intent find = new Intent(SaveOrFind.this, FindSeatActivity.class);
                 startActivity(find);
             }
         });
