@@ -58,6 +58,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private EditText mPhoneNumberView;
+    private EditText mUserNameview;
     private View mProgressView;
     private View mRegisterFormView;
 
@@ -70,35 +72,37 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
-
+        // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.reg_email);
-        //populateAutoComplete();
+        populateAutoComplete();
 
-        mPasswordView = (EditText) findViewById(R.id.reg_password);
+        mPasswordView      = (EditText) findViewById(R.id.reg_password);
+        mPhoneNumberView   = (EditText) findViewById(R.id.reg_user_number);
+        mUserNameview      = (EditText) findViewById(R.id.reg_user_name);
+        mRegisterFormView  = findViewById(R.id.register_form);
+
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.signUp || id == EditorInfo.IME_NULL) {
-                    // attemptLogin();
+                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                    attemptSignUp();
                     return true;
                 }
                 return false;
             }
         });
 
+        //Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         Button registerButton = (Button) findViewById(R.id.register_button);
 
-
-        registerButton.setOnClickListener(new View.OnClickListener(){
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-
+            public void onClick(View view) {
+                attemptSignUp();
             }
-
         });
 
-        mRegisterFormView = findViewById(R.id.register_form);
-        mProgressView = findViewById(R.id.register_progress);
+        mProgressView = findViewById(R.id.login_progress);
 
     }
 
@@ -151,7 +155,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
-    private void attemptLogin() {
+    private void attemptSignUp() {
         if (mAuthTask != null) {
             return;
         }
@@ -161,8 +165,10 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String email        = mEmailView.getText().toString();
+        String password     = mPasswordView.getText().toString();
+        String userName     = mUserNameview.getText().toString();
+        String userPhoneNUm = mPhoneNumberView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -175,7 +181,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         }
 
         // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
+        if (!TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
@@ -184,6 +190,27 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
             focusView = mEmailView;
             cancel = true;
         }
+
+        // Check for a valid username
+        if (!TextUtils.isEmpty(userName)){
+            mUserNameview.setError(getString(R.string.error_field_required));
+            focusView = mUserNameview;
+            cancel    = true;
+        }else if (!isUserNameValid(userName)){
+            focusView = mUserNameview;
+            cancel    = true;
+        }
+
+        // Check for a valid phoneNumber
+        if (!TextUtils.isEmpty(userPhoneNUm)){
+            mPhoneNumberView.setError(getString(R.string.error_field_required));
+            focusView = mPhoneNumberView;
+            cancel    = true;
+        }else if (!isUserNameValid(userName)){
+            focusView = mPhoneNumberView;
+            cancel    = true;
+        }
+
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -206,6 +233,10 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 4;
+    }
+    private boolean isUserNameValid(String userName) {
+        //@TODO: Replace this with your own logic
+        return userName.length() > 4;
     }
 
     /**
@@ -325,7 +356,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
 
             for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
+                if (pieces[0].equals(----------------------------------------------------------------------------------------------------------------)) {
                     // Account exists, return true if the password matches.
                     return pieces[1].equals(mPassword);
                 }
