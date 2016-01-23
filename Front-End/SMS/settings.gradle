@@ -1,1 +1,1 @@
-include ':app', ':cloudmine-android-v0.6.6'
+include ':cloudmine-android-v0.6.6', ':app'

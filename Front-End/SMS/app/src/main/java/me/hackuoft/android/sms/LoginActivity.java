@@ -30,6 +30,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.cloudmine.api.CMApiCredentials;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,6 +55,9 @@ import com.cloudmine.api.rest.response.ObjectModificationResponse;
 /**
  * A login screen that offers login via email/password.
  */
+
+
+
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     // Find this in your developer console
@@ -85,6 +90,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // This will initialize your credentials
+        CMApiCredentials.initialize(APP_ID, API_KEY, getApplicationContext());
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
