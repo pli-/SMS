@@ -18,7 +18,12 @@
     <string name="action_username">User name</string>
     <string name="action_phoneNumber">Phone number</string>
     <string name="action_password">Password</string>
+
+    <string name="title_activity_find_seat">Find A Seat</string>
+    <string name="title_activity_save_seat">SaveSeatActivity</string>
+
     <string name="title_activity_pick_building">PickBuildingActivity</string>
+
     <string-array name="universities">
         <item>Carleton University</item>
         <item>McGill University</item>
@@ -38,4 +43,5 @@
         <item>BA1180</item>
         <item>BA2160</item>
     </string-array>
+
 </resources>

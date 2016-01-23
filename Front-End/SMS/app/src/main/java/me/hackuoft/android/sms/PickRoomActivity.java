@@ -43,7 +43,7 @@ public class PickRoomActivity extends AppCompatActivity {
         submitRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent proceed = new Intent(PickRoomActivity.this, LoginActivity.class);
+                Intent proceed = new Intent(PickRoomActivity.this, SaveOrFind.class);
                 startActivity(proceed);
             }
         });
