@@ -14,7 +14,14 @@ var UserSchema = new Schema({
   phone : {
     type: String,
     require: false
-  }
+  },
+  
+  dict : [{
+	  nameSchool : String,
+	  nameBuilding :String,
+	  roomClass : String
+  }]
+  
   
   }
 });
