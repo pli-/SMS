@@ -21,8 +21,19 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bahen Centre"
-        android:id="@+id/BahenCentre"
+        android:text="Submit"
+        android:id="@+id/building_submit"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:id="@+id/buildings_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:layout_marginTop="33dp"
+        android:entries="@array/buildings"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

@@ -39,7 +39,7 @@ public class PickBuildingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_building);
 
-        Button pickRoomButton = (Button) findViewById(R.id.BahenCentre);
+        Button pickRoomButton = (Button) findViewById(R.id.building_submit);
         pickRoomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

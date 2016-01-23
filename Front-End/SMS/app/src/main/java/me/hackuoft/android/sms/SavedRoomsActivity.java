@@ -1,7 +1,5 @@
 package me.hackuoft.android.sms;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
@@ -24,7 +22,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -32,21 +29,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class PickUniversityActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class SavedRoomsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pick_university);
+        setContentView(R.layout.activity_saved_rooms);
 
-        Button submit = (Button) findViewById(R.id.university_submit);
-        submit.setOnClickListener(new View.OnClickListener() {
+        Button newUniversityButton = (Button) findViewById(R.id.new_university_button);
+
+        newUniversityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent proceed = new Intent(PickUniversityActivity.this, PickBuildingActivity.class);
-                startActivity(proceed);
+                Intent addNew = new Intent(SavedRoomsActivity.this, PickUniversityActivity.class);
+                startActivity(addNew);
             }
+
         });
     }
-
 }

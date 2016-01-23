@@ -28,7 +28,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".PickUniversityActivity" />
         <activity android:name=".PickBuildingActivity" />
-        <activity android:name=".PickRoomActivity"></activity>
+        <activity android:name=".PickRoomActivity" />
+        <activity android:name=".SavedRoomsActivity"></activity>
     </application>
 
 </manifest>

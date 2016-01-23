@@ -39,8 +39,8 @@ public class PickRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_room);
 
-        Button saveOrFindButton = (Button) findViewById(R.id.BA1180);
-        saveOrFindButton.setOnClickListener(new View.OnClickListener() {
+        Button submitRoom = (Button) findViewById(R.id.room_submit);
+        submitRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent proceed = new Intent(PickRoomActivity.this, LoginActivity.class);
