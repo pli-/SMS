@@ -33,12 +33,32 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import static android.Manifest.permission.READ_CONTACTS;
 
+// CloudMine library imports
+import com.cloudmine.api.CMApiCredentials;
+import com.cloudmine.api.CMObject;
+import com.cloudmine.api.rest.callbacks.CMObjectResponseCallback;
+import com.cloudmine.api.rest.callbacks.ObjectModificationResponseCallback;
+import com.cloudmine.api.db.LocallySavableCMObject;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
+import com.cloudmine.api.rest.response.CMObjectResponse;
+import com.cloudmine.api.rest.response.ObjectModificationResponse;
 /**
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+
+    // Find this in your developer console
+    private static final String APP_ID = "52bb80091f01482cbe63e7c9df2e3dce";
+    // Find this in your developer console
+    private static final String API_KEY = "8509F10FAA894594A694F0F49E3EBCDB";
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -71,6 +91,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
+
+        // initialize CloudMine library
+        CMApiCredentials.initialize(APP_ID, API_KEY, getApplicationContext());
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -105,6 +128,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
     }
 
     private void populateAutoComplete() {
@@ -200,6 +224,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+            Intent seeRooms = new Intent(LoginActivity.this, SavedRoomsActivity.class);
+            startActivity(seeRooms);
         }
     }
 
