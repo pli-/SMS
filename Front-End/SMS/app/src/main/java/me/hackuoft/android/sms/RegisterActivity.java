@@ -92,7 +92,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-
+                Intent regUser = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(regUser);
             }
 
         });
